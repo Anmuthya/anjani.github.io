@@ -4,8 +4,8 @@ subtitle: "DevOps Engineer & AI Enthusiast"
 description: "Exploring DevOps, Cloud Technologies, AI/ML, and sharing insights from my journey in technology"
 author: "Anjani Kumar Muthyala"
 email: "muthyala.anjani@gmail.com"
-url: "https://anjani.github.io"
-baseurl: ""
+url: "https://anmuthya.github.io"
+baseurl: "/anjani.github.io"
 
 # Build settings
 markdown: kramdown
