@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }} - {{ site.subtitle }}{% endif %}</title>
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="keywords" content="{% if page.keywords %}{{ page.keywords }}{% else %}DevOps, AWS, Kubernetes, AI automation, cloud infrastructure, CI/CD, Ansible, Terraform{% endif %}">
+    <meta name="author" content="{{ site.author }}">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ '/assets/images/og-image.jpg' | absolute_url }}{% endif %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@{{ site.social.twitter }}">
+    <meta name="twitter:creator" content="@{{ site.social.twitter }}">
+    <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+    <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="twitter:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ '/assets/images/og-image.jpg' | absolute_url }}{% endif %}">
+    
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="theme-color" content="#2563eb">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "{% if page.layout == 'post' %}BlogPosting{% else %}Person{% endif %}",
+      {% if page.layout == 'post' %}
+      "headline": "{{ page.title }}",
+      "description": "{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}",
+      "author": {
+        "@type": "Person",
+        "name": "{{ site.author }}"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "{{ site.author }}"
+      },
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.date | date_to_xmlschema }}",
+      "url": "{{ page.url | absolute_url }}"
+      {% else %}
+      "name": "{{ site.author }}",
+      "jobTitle": "Senior DevOps Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Verizon"
+      },
+      "url": "{{ site.url }}",
+      "sameAs": [
+        "https://github.com/{{ site.social.github }}",
+        "https://twitter.com/{{ site.social.twitter }}",
+        "https://linkedin.com/in/{{ site.social.linkedin }}"
+      ],
+      "knowsAbout": ["DevOps", "AWS", "Kubernetes", "AI Automation", "Cloud Infrastructure", "CI/CD"],
+      "description": "{{ site.description }}"
+      {% endif %}
+    }
+    </script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    
+    <!-- SEO -->
+    {% seo %}
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ '/assets/favicon.ico' | relative_url }}">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a class="nav-brand" href="{{ '/' | relative_url }}">
+                    <h1>{{ site.title }}</h1>
+                    {% if site.subtitle %}<p class="subtitle">{{ site.subtitle }}</p>{% endif %}
+                </a>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ '/about' | relative_url }}" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ '/archive' | relative_url }}" class="nav-link">Archive</a>
+                    </li>
+                </ul>
+                
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        {{ content }}
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>{{ site.title }}</h3>
+                <p>{{ site.description }}</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="social-links">
+                    {% if site.social.github %}
+                        <a href="https://github.com/{{ site.social.github }}" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    {% endif %}
+                    {% if site.social.twitter %}
+                        <a href="https://twitter.com/{{ site.social.twitter }}" target="_blank" rel="noopener">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    {% endif %}
+                    {% if site.social.linkedin %}
+                        <a href="https://linkedin.com/in/{{ site.social.linkedin }}" target="_blank" rel="noopener">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    {% endif %}
+                    {% if site.email %}
+                        <a href="mailto:{{ site.email }}">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <p>&copy; {{ site.time | date: '%Y' }} {{ site.author }}. All rights reserved.</p>
+                <p>Built with <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> and hosted on <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+    </script>
+</body>
+</html>
