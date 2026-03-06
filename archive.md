@@ -7,7 +7,7 @@ permalink: /archive/
 <div class="archive-container">
     <header class="archive-header animate-on-scroll">
         <div class="section-label">All Posts</div>
-        <h1>Blog Archive</h1>
+        <h1>Blog <span class="text-gradient">Archive</span></h1>
         <p>All articles, organized by date</p>
     </header>
 
@@ -60,8 +60,8 @@ permalink: /archive/
                             </div>
                             
                             <div class="archive-item-action">
-                                <a href="{{ post.url | relative_url }}" class="btn btn-primary" style="padding:0.5rem 1rem;font-size:0.8rem;">
-                                    Read <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+                                <a href="{{ post.url | relative_url }}" class="btn btn-primary" style="padding:0.5rem 1rem;font-size:0.78rem;">
+                                    Read <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i>
                                 </a>
                             </div>
                         </article>
@@ -80,7 +80,7 @@ permalink: /archive/
                 <a href="{{ '/' | relative_url }}" class="btn btn-primary">
                     <i class="fas fa-home"></i> Back to Home
                 </a>
-                <a href="{{ '/about' | relative_url }}" class="btn btn-secondary">
+                <a href="{{ '/about' | relative_url }}" class="btn btn-outline">
                     <i class="fas fa-user-astronaut"></i> Get in Touch
                 </a>
             </div>

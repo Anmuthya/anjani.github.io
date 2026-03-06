@@ -3,7 +3,7 @@ layout: default
 ---
 
 <article class="post">
-    <header class="post-header">
+    <header class="post-header animate-on-scroll">
         {% if page.category %}
             <span class="post-card-category" style="margin-bottom:1rem;">{{ page.category }}</span>
         {% endif %}
@@ -83,10 +83,9 @@ layout: default
     </footer>
 </article>
 
-<!-- Related Posts -->
 {% assign related_posts = site.related_posts | limit: 3 %}
 {% if related_posts.size > 0 %}
-<section class="related-posts">
+<section class="related-posts animate-on-scroll">
     <h3>You might also like</h3>
     <div class="related-posts-grid">
         {% for post in related_posts %}

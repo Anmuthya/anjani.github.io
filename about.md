@@ -9,13 +9,13 @@ keywords: "DevOps engineer, AWS expert, Kubernetes specialist, AI automation, cl
 <div class="about-container">
     <header class="about-header animate-on-scroll">
         <div class="section-label">About Me</div>
-        <h1>Anjani Kumar Muthyala</h1>
+        <h1><span class="text-gradient">Anjani Kumar Muthyala</span></h1>
         <p class="about-role">Senior DevOps Engineer · AI Enthusiast · Cloud Architect</p>
     </header>
 
-    <!-- ═══════════ INTRO ═══════════ -->
+    <!-- INTRO -->
     <div class="about-section animate-on-scroll">
-        <h2>Hello! <span style="font-size:1.5rem;">👋</span></h2>
+        <h2>Hello! 👋</h2>
         <p>I'm a Senior DevOps Engineer currently working at <strong>Verizon</strong>, specializing in building scalable infrastructure, implementing CI/CD pipelines, and exploring the exciting world of Agentic AI for autonomous system operations.</p>
         
         <p>With over <strong>8 years of experience</strong> in DevOps and cloud technologies, I've had the privilege of working with cutting-edge technologies and solving complex infrastructure challenges. I'm passionate about advancing AI-driven automation — particularly in autonomous planning, validation, and remediation systems.</p>
@@ -61,10 +61,10 @@ keywords: "DevOps engineer, AWS expert, Kubernetes specialist, AI automation, cl
         </ul>
     </div>
 
-    <!-- ═══════════ TECH STACK ═══════════ -->
+    <!-- TECH STACK -->
     <div class="about-section animate-on-scroll">
         <div class="section-label" style="justify-content:flex-start;margin-bottom:1.5rem;">Tech Stack</div>
-        <h2>Technical Expertise</h2>
+        <h2>Technical <span class="text-gradient">Expertise</span></h2>
         <p>Technologies and tools I work with on a daily basis:</p>
         
         <div class="tech-grid">
@@ -96,9 +96,9 @@ keywords: "DevOps engineer, AWS expert, Kubernetes specialist, AI automation, cl
         </div>
     </div>
 
-    <!-- ═══════════ CONNECT ═══════════ -->
+    <!-- CONNECT -->
     <div class="about-section animate-on-scroll">
-        <h2>Let's Connect!</h2>
+        <h2>Let's <span class="text-gradient">Connect!</span></h2>
         <p>I love connecting with fellow DevOps engineers, AI enthusiasts, and technology professionals. Feel free to reach out!</p>
         
         <div class="connect-links">
@@ -128,7 +128,7 @@ keywords: "DevOps engineer, AWS expert, Kubernetes specialist, AI automation, cl
         </div>
     </div>
 
-    <!-- ═══════════ ABOUT BLOG ═══════════ -->
+    <!-- ABOUT BLOG -->
     <div class="about-section animate-on-scroll">
         <h2>About This Blog</h2>
         <p>This blog serves as a platform to share my experiences and insights from working with cutting-edge technologies in the DevOps and AI space. As someone passionate about automation and innovation, I believe in documenting the journey and sharing knowledge with the community.</p>

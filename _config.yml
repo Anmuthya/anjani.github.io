@@ -27,7 +27,7 @@ social:
   linkedin: anjani-kumar-muthyala
 
 # SEO settings
-google_analytics: # Add your Google Analytics ID here
+google_analytics:
 twitter:
   username: anjanikumar_m
   card: summary_large_image
@@ -35,19 +35,6 @@ author:
   name: Anjani Kumar Muthyala
   twitter: anjanikumar_m
   picture: /assets/images/profile.jpg
-
-# Open Graph defaults
-defaults:
-  - scope:
-      path: ""
-    values:
-      image: /assets/images/og-image.jpg
-      twitter:
-        card: summary_large_image
-
-# Site verification
-google_site_verification:
-bing_site_verification:
 
 # Exclude from processing
 exclude:
@@ -81,6 +68,7 @@ defaults:
       path: ""
     values:
       layout: "default"
+      image: /assets/images/og-image.jpg
 
 # Sass settings
 sass:

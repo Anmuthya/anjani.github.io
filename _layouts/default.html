@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
     <meta name="author" content="{{ site.author }}">
     <link rel="canonical" href="{{ page.url | absolute_url }}">
     
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
     <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
     <meta property="og:description" content="{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
@@ -24,9 +24,8 @@
     <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
     <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
     
-    <!-- Additional SEO -->
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#3b82f6">
+    <meta name="theme-color" content="#030712">
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -55,14 +54,12 @@
     }
     </script>
     
-    <!-- Preconnect -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Google Fonts — Inter + JetBrains Mono -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- CSS -->
@@ -72,11 +69,30 @@
     <link rel="icon" type="image/x-icon" href="{{ '/assets/favicon.ico' | relative_url }}">
     
     {% seo %}
+
+    <!-- Prevent FOUC — apply saved theme instantly -->
+    <script>
+    (function(){
+        var t = localStorage.getItem('theme');
+        if (t) document.documentElement.setAttribute('data-theme', t);
+    })();
+    </script>
 </head>
 <body>
-    <!-- Reading Progress Bar -->
+    <!-- Aurora background orbs -->
+    <div class="aurora" aria-hidden="true">
+        <div class="aurora-orb"></div>
+        <div class="aurora-orb"></div>
+        <div class="aurora-orb"></div>
+        <div class="aurora-orb"></div>
+    </div>
+    <!-- Noise texture -->
+    <div class="noise" aria-hidden="true"></div>
+
+    <!-- Reading Progress -->
     <div class="reading-progress" id="readingProgress"></div>
 
+    <!-- Header -->
     <header class="site-header" id="siteHeader">
         <nav class="navbar">
             <div class="nav-container">
@@ -89,22 +105,22 @@
                     <ul class="nav-menu" id="navMenu">
                         <li class="nav-item">
                             <a href="{{ '/' | relative_url }}" class="nav-link{% if page.url == '/' %} active{% endif %}">
-                                <i class="fas fa-terminal" style="margin-right:4px;font-size:0.75rem;"></i> Home
+                                <i class="fas fa-terminal"></i> Home
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ '/about' | relative_url }}" class="nav-link{% if page.url == '/about/' %} active{% endif %}">
-                                <i class="fas fa-user-astronaut" style="margin-right:4px;font-size:0.75rem;"></i> About
+                                <i class="fas fa-user-astronaut"></i> About
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ '/archive' | relative_url }}" class="nav-link{% if page.url == '/archive/' %} active{% endif %}">
-                                <i class="fas fa-archive" style="margin-right:4px;font-size:0.75rem;"></i> Archive
+                                <i class="fas fa-layer-group"></i> Archive
                             </a>
                         </li>
                     </ul>
                     
-                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                         <i class="fas fa-sun icon-sun"></i>
                         <i class="fas fa-moon icon-moon"></i>
                     </button>
@@ -134,24 +150,16 @@
                 <h4>Connect</h4>
                 <div class="social-links">
                     {% if site.social.github %}
-                        <a href="https://github.com/{{ site.social.github }}" target="_blank" rel="noopener" title="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
+                        <a href="https://github.com/{{ site.social.github }}" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
                     {% endif %}
                     {% if site.social.twitter %}
-                        <a href="https://twitter.com/{{ site.social.twitter }}" target="_blank" rel="noopener" title="Twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
+                        <a href="https://twitter.com/{{ site.social.twitter }}" target="_blank" rel="noopener" title="Twitter"><i class="fab fa-twitter"></i></a>
                     {% endif %}
                     {% if site.social.linkedin %}
-                        <a href="https://linkedin.com/in/{{ site.social.linkedin }}" target="_blank" rel="noopener" title="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
+                        <a href="https://linkedin.com/in/{{ site.social.linkedin }}" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     {% endif %}
                     {% if site.email %}
-                        <a href="mailto:{{ site.email }}" title="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
+                        <a href="mailto:{{ site.email }}" title="Email"><i class="fas fa-envelope"></i></a>
                     {% endif %}
                 </div>
             </div>
@@ -163,107 +171,117 @@
         </div>
         
         <div class="footer-bottom">
-            <p>Designed & developed with <span style="color:var(--accent);">♥</span> by {{ site.author }}</p>
+            <p>Crafted with <span style="color:var(--cyan);">&#9829;</span> by {{ site.author }}</p>
         </div>
     </footer>
 
     <!-- Back to Top -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <script>
     (function() {
-        // ═══════════ DARK MODE ═══════════
-        const themeToggle = document.getElementById('themeToggle');
+        // ═══ THEME ═══
+        const toggle = document.getElementById('themeToggle');
         const html = document.documentElement;
         
-        // Check saved preference or system preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            html.setAttribute('data-theme', savedTheme);
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            html.setAttribute('data-theme', 'dark');
-        }
-        
-        themeToggle.addEventListener('click', () => {
-            const current = html.getAttribute('data-theme');
-            const next = current === 'dark' ? 'light' : 'dark';
+        toggle.addEventListener('click', () => {
+            const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
             html.setAttribute('data-theme', next);
             localStorage.setItem('theme', next);
         });
 
-        // ═══════════ MOBILE MENU ═══════════
+        // ═══ MOBILE MENU ═══
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
-
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
-
         document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
         }));
 
-        // ═══════════ HEADER SCROLL ═══════════
+        // ═══ HEADER SCROLL ═══
         const header = document.getElementById('siteHeader');
-        let lastScroll = 0;
-        
         window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            if (currentScroll > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-            lastScroll = currentScroll;
+            header.classList.toggle('scrolled', window.pageYOffset > 40);
         }, { passive: true });
 
-        // ═══════════ READING PROGRESS ═══════════
-        const progressBar = document.getElementById('readingProgress');
-        
+        // ═══ READING PROGRESS ═══
+        const progress = document.getElementById('readingProgress');
         window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-            progressBar.style.width = progress + '%';
+            const h = document.documentElement.scrollHeight - window.innerHeight;
+            progress.style.width = h > 0 ? (window.pageYOffset / h * 100) + '%' : '0%';
         }, { passive: true });
 
-        // ═══════════ BACK TO TOP ═══════════
-        const backToTop = document.getElementById('backToTop');
-        
+        // ═══ BACK TO TOP ═══
+        const btt = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 400) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
+            btt.classList.toggle('visible', window.pageYOffset > 400);
         }, { passive: true });
-        
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        // ═══════════ SCROLL ANIMATIONS ═══════════
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -40px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                    observer.unobserve(entry.target);
+        // ═══ SCROLL ANIMATIONS ═══
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('animated');
+                    io.unobserve(e.target);
                 }
             });
-        }, observerOptions);
-        
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
+        }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+        document.querySelectorAll('.animate-on-scroll').forEach(el => io.observe(el));
+
+        // ═══ TYPEWRITER ═══
+        const tw = document.getElementById('typewriter');
+        if (tw) {
+            const words = JSON.parse(tw.dataset.words);
+            let wi = 0, ci = 0, deleting = false;
+
+            function type() {
+                const word = words[wi];
+                if (deleting) {
+                    tw.textContent = word.substring(0, ci--);
+                    if (ci < 0) { deleting = false; wi = (wi + 1) % words.length; setTimeout(type, 400); return; }
+                } else {
+                    tw.textContent = word.substring(0, ++ci);
+                    if (ci === word.length) { deleting = true; setTimeout(type, 2000); return; }
+                }
+                setTimeout(type, deleting ? 40 : 80);
+            }
+            setTimeout(type, 800);
+        }
+
+        // ═══ COUNTER ANIMATION ═══
+        document.querySelectorAll('[data-count]').forEach(el => {
+            const target = el.dataset.count;
+            const isNum = !isNaN(target);
+            if (!isNum) return;
+
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        let start = 0;
+                        const end = parseInt(target);
+                        const dur = 1500;
+                        const startTime = performance.now();
+                        function tick(now) {
+                            const p = Math.min((now - startTime) / dur, 1);
+                            const eased = 1 - Math.pow(1 - p, 3);
+                            el.textContent = Math.round(eased * end) + '+';
+                            if (p < 1) requestAnimationFrame(tick);
+                        }
+                        requestAnimationFrame(tick);
+                        obs.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.5 });
+            obs.observe(el);
         });
+
     })();
     </script>
 </body>
