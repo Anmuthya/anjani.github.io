@@ -8,6 +8,11 @@ keywords: "DevOps engineer, AWS expert, Kubernetes specialist, AI automation, cl
 
 <div class="about-container">
     <header class="about-header animate-on-scroll">
+        <div class="profile-avatar profile-avatar-lg">
+            <div class="profile-avatar-ring">
+                <img src="{{ '/assets/images/profile.jpeg' | relative_url }}" alt="Anjani Kumar Muthyala" loading="eager">
+            </div>
+        </div>
         <div class="section-label">About Me</div>
         <h1><span class="text-gradient">Anjani Kumar Muthyala</span></h1>
         <p class="about-role">Senior DevOps Engineer · AI Enthusiast · Cloud Architect</p>

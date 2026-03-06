@@ -432,6 +432,42 @@ strong, b { font-weight: 600; color: var(--text-0); }
     padding: 3rem 2rem;
 }
 
+/* ============= PROFILE IMAGE ============= */
+.profile-avatar {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+.profile-avatar-ring {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(135deg, var(--blue), var(--violet), var(--cyan), var(--emerald));
+    background-size: 300% 300%;
+    animation: borderGlow 6s ease infinite;
+    box-shadow: 0 0 30px rgba(var(--cyan-rgb), 0.2), 0 0 60px rgba(var(--violet-rgb), 0.1);
+}
+.profile-avatar-ring img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 3px solid var(--bg-1);
+}
+.profile-avatar-ring:hover {
+    box-shadow: 0 0 40px rgba(var(--cyan-rgb), 0.35), 0 0 80px rgba(var(--violet-rgb), 0.2);
+    transform: scale(1.03);
+    transition: all 0.4s var(--ease);
+}
+
+/* About page — larger avatar */
+.profile-avatar-lg .profile-avatar-ring {
+    width: 160px;
+    height: 160px;
+}
+
 /* ============= HERO ============= */
 .hero {
     position: relative;

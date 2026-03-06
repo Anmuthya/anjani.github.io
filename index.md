@@ -6,6 +6,11 @@ title: "Home"
 <!-- ═══ HERO ═══ -->
 <section class="hero animate-on-scroll">
     <div class="hero-content">
+        <div class="profile-avatar">
+            <div class="profile-avatar-ring">
+                <img src="{{ '/assets/images/profile.jpeg' | relative_url }}" alt="Anjani Kumar Muthyala" loading="eager">
+            </div>
+        </div>
         <div class="hero-badge">
             <span class="status-dot"></span>
             Available for collaboration
