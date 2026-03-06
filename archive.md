@@ -1,7 +1,9 @@
 ---
 layout: default
-title: "Archive"
+title: "Blog Archive — Anjani Kumar Muthyala | DevOps, AI & Cloud Articles"
+description: "Browse all blog posts by Anjani Kumar Muthyala on DevOps, AWS, Kubernetes, Terraform, AI automation, and cloud infrastructure."
 permalink: /archive/
+keywords: "Anjani Kumar Muthyala blog, DevOps articles, AWS tutorials, Kubernetes guides, AI automation posts"
 ---
 
 <div class="archive-container">

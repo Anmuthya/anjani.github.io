@@ -1,6 +1,8 @@
 ---
 layout: default
-title: "Home"
+title: "Anjani Kumar Muthyala — Senior DevOps Engineer, Cloud Architect & AI Enthusiast"
+description: "Anjani Kumar Muthyala is a Senior DevOps Engineer at Verizon specializing in AWS, Kubernetes, Terraform, CI/CD, and AI-driven automation. Explore his blog, resume, and projects."
+keywords: "Anjani Kumar Muthyala, Anjani Muthyala, Anjani Kumar, DevOps Engineer, AWS, Kubernetes, Terraform, AI automation, Verizon, cloud architect, CI/CD"
 ---
 
 <!-- ═══ HERO ═══ -->

@@ -1,7 +1,7 @@
 # Personal Blog Configuration
 title: "Anjani Kumar Muthyala"
 subtitle: "DevOps Engineer & AI Enthusiast"
-description: "Exploring DevOps, Cloud Technologies, AI/ML, and sharing insights from my journey in technology"
+description: "Anjani Kumar Muthyala — Senior DevOps Engineer at Verizon. Blog about DevOps, AWS, Kubernetes, Terraform, AI automation, and cloud infrastructure."
 author: "Anjani Kumar Muthyala"
 email: "muthyala.anjani@gmail.com"
 url: "https://anjani-muthyala.github.io"
@@ -26,7 +26,7 @@ social:
   twitter: anjanikumar_m
   linkedin: anjani-kumar-muthyala
 
-# SEO settings
+# SEO settings — jekyll-seo-tag uses these
 google_analytics:
 twitter:
   username: anjanikumar_m
@@ -35,6 +35,21 @@ author:
   name: Anjani Kumar Muthyala
   twitter: anjanikumar_m
   picture: /assets/images/profile.jpeg
+
+# Open Graph / Social sharing default image
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Anjani Kumar Muthyala"
+      image: /assets/images/profile.jpeg
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+      image: /assets/images/profile.jpeg
 
 # Exclude from processing
 exclude:
@@ -55,20 +70,6 @@ collections:
   posts:
     output: true
     permalink: /:year/:month/:day/:title/
-
-# Default values
-defaults:
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-      author: "Anjani Kumar Muthyala"
-  - scope:
-      path: ""
-    values:
-      layout: "default"
-      image: /assets/images/og-image.jpg
 
 # Sass settings
 sass:

@@ -27,32 +27,93 @@
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#030712">
     
-    <!-- Structured Data -->
+    <!-- Structured Data — Person (always present for brand) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "{% if page.layout == 'post' %}BlogPosting{% else %}Person{% endif %}",
-      {% if page.layout == 'post' %}
-      "headline": "{{ page.title }}",
-      "description": "{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}",
-      "author": { "@type": "Person", "name": "{{ site.author }}" },
-      "publisher": { "@type": "Person", "name": "{{ site.author }}" },
-      "datePublished": "{{ page.date | date_to_xmlschema }}",
-      "url": "{{ page.url | absolute_url }}"
-      {% else %}
-      "name": "{{ site.author }}",
+      "@type": "Person",
+      "name": "Anjani Kumar Muthyala",
+      "alternateName": ["Anjani Muthyala", "Anjani Kumar", "Anjani"],
+      "givenName": "Anjani Kumar",
+      "familyName": "Muthyala",
       "jobTitle": "Senior DevOps Engineer",
-      "worksFor": { "@type": "Organization", "name": "Verizon" },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Verizon",
+        "url": "https://www.verizon.com"
+      },
       "url": "{{ site.url }}",
+      "image": "{{ '/assets/images/profile.jpeg' | absolute_url }}",
+      "email": "{{ site.email }}",
+      "description": "Senior DevOps Engineer at Verizon with 8+ years of experience in AWS, Kubernetes, Terraform, CI/CD, and AI-driven automation.",
       "sameAs": [
         "https://github.com/{{ site.social.github }}",
         "https://twitter.com/{{ site.social.twitter }}",
         "https://linkedin.com/in/{{ site.social.linkedin }}"
       ],
-      "knowsAbout": ["DevOps", "AWS", "Kubernetes", "AI Automation", "Cloud Infrastructure", "CI/CD"]
-      {% endif %}
+      "knowsAbout": ["DevOps", "Amazon Web Services", "Kubernetes", "Terraform", "Ansible", "AI Automation", "Cloud Infrastructure", "CI/CD", "Docker", "Jenkins", "AWS Bedrock", "Agentic AI", "Site Reliability Engineering"],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "certification",
+          "name": "AWS Solutions Architect – Associate"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "certification",
+          "name": "Red Hat Certified – Ansible Automation"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "certification",
+          "name": "Google Cloud Gen AI Leader"
+        }
+      ]
     }
     </script>
+
+    <!-- Structured Data — WebSite (enables sitelinks search box) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Anjani Kumar Muthyala — DevOps & AI Blog",
+      "alternateName": "Anjani Muthyala Blog",
+      "url": "{{ site.url }}",
+      "author": {
+        "@type": "Person",
+        "name": "Anjani Kumar Muthyala"
+      },
+      "description": "{{ site.description }}"
+    }
+    </script>
+
+    {% if page.layout == 'post' %}
+    <!-- Structured Data — BlogPosting -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{{ page.title }}",
+      "description": "{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}",
+      "author": {
+        "@type": "Person",
+        "name": "Anjani Kumar Muthyala",
+        "url": "{{ site.url }}"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Anjani Kumar Muthyala",
+        "url": "{{ site.url }}"
+      },
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.date | date_to_xmlschema }}",
+      "url": "{{ page.url | absolute_url }}",
+      "mainEntityOfPage": "{{ page.url | absolute_url }}",
+      "image": "{{ '/assets/images/profile.jpeg' | absolute_url }}"
+    }
+    </script>
+    {% endif %}
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

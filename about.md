@@ -1,9 +1,9 @@
 ---
 layout: default
-title: "About Anjani Kumar Muthyala — DevOps Engineer & AI Leader"
-description: "Learn about Anjani Kumar Muthyala, Senior DevOps Engineer at Verizon with 8+ years experience in AWS, Kubernetes, AI automation, and cloud infrastructure."
+title: "About Anjani Kumar Muthyala — Senior DevOps Engineer & AI Leader at Verizon"
+description: "Anjani Kumar Muthyala is a Senior DevOps Engineer at Verizon with 8+ years experience in AWS, Kubernetes, Terraform, AI automation, and cloud infrastructure. Learn about his expertise, certifications, and projects."
 permalink: /about/
-keywords: "DevOps engineer, AWS expert, Kubernetes specialist, AI automation, cloud infrastructure, Verizon"
+keywords: "Anjani Kumar Muthyala, Anjani Muthyala, Anjani Kumar, about, DevOps engineer, AWS expert, Kubernetes specialist, AI automation, cloud infrastructure, Verizon, Senior DevOps Engineer"
 ---
 
 <div class="about-container">
