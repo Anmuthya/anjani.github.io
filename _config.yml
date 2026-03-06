@@ -36,12 +36,6 @@ author:
   twitter: anjanikumar_m
   picture: /assets/images/profile.jpg
 
-# SEO plugins
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
-
 # Open Graph defaults
 defaults:
   - scope:
@@ -51,10 +45,9 @@ defaults:
       twitter:
         card: summary_large_image
 
-# Site verification (add your codes when you get them)
+# Site verification
 google_site_verification:
 bing_site_verification:
-yandex_site_verification:
 
 # Exclude from processing
 exclude:
@@ -66,6 +59,9 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - README.md
+  - COLOR_PALETTE.md
+  - IMPLEMENTATION_SUMMARY.md
+  - THEME_GUIDE.md
 
 # Collections
 collections:
@@ -80,7 +76,7 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      author: "Your Name"
+      author: "Anjani Kumar Muthyala"
   - scope:
       path: ""
     values:

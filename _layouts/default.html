@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }} - {{ site.subtitle }}{% endif %}</title>
+    <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }} — {{ site.subtitle }}{% endif %}</title>
     <meta name="description" content="{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
     <meta name="keywords" content="{% if page.keywords %}{{ page.keywords }}{% else %}DevOps, AWS, Kubernetes, AI automation, cloud infrastructure, CI/CD, Ansible, Terraform{% endif %}">
     <meta name="author" content="{{ site.author }}">
@@ -16,8 +16,6 @@
     <meta property="og:url" content="{{ page.url | absolute_url }}">
     <meta property="og:site_name" content="{{ site.title }}">
     <meta property="og:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ '/assets/images/og-image.jpg' | absolute_url }}{% endif %}">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
@@ -25,12 +23,10 @@
     <meta name="twitter:creator" content="@{{ site.social.twitter }}">
     <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
     <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-    <meta name="twitter:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ '/assets/images/og-image.jpg' | absolute_url }}{% endif %}">
     
     <!-- Additional SEO -->
     <meta name="robots" content="index, follow">
-    <meta name="googlebot" content="index, follow">
-    <meta name="theme-color" content="#2563eb">
+    <meta name="theme-color" content="#3b82f6">
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -40,53 +36,48 @@
       {% if page.layout == 'post' %}
       "headline": "{{ page.title }}",
       "description": "{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}",
-      "author": {
-        "@type": "Person",
-        "name": "{{ site.author }}"
-      },
-      "publisher": {
-        "@type": "Person",
-        "name": "{{ site.author }}"
-      },
+      "author": { "@type": "Person", "name": "{{ site.author }}" },
+      "publisher": { "@type": "Person", "name": "{{ site.author }}" },
       "datePublished": "{{ page.date | date_to_xmlschema }}",
-      "dateModified": "{{ page.date | date_to_xmlschema }}",
       "url": "{{ page.url | absolute_url }}"
       {% else %}
       "name": "{{ site.author }}",
       "jobTitle": "Senior DevOps Engineer",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Verizon"
-      },
+      "worksFor": { "@type": "Organization", "name": "Verizon" },
       "url": "{{ site.url }}",
       "sameAs": [
         "https://github.com/{{ site.social.github }}",
         "https://twitter.com/{{ site.social.twitter }}",
         "https://linkedin.com/in/{{ site.social.linkedin }}"
       ],
-      "knowsAbout": ["DevOps", "AWS", "Kubernetes", "AI Automation", "Cloud Infrastructure", "CI/CD"],
-      "description": "{{ site.description }}"
+      "knowsAbout": ["DevOps", "AWS", "Kubernetes", "AI Automation", "Cloud Infrastructure", "CI/CD"]
       {% endif %}
     }
     </script>
     
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts — Inter + JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <!-- CSS -->
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-    
-    <!-- SEO -->
-    {% seo %}
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ '/assets/favicon.ico' | relative_url }}">
     
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    {% seo %}
 </head>
 <body>
-    <header class="site-header">
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <header class="site-header" id="siteHeader">
         <nav class="navbar">
             <div class="nav-container">
                 <a class="nav-brand" href="{{ '/' | relative_url }}">
@@ -94,22 +85,35 @@
                     {% if site.subtitle %}<p class="subtitle">{{ site.subtitle }}</p>{% endif %}
                 </a>
                 
-                <ul class="nav-menu">
-                    <li class="nav-item">
-                        <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ '/about' | relative_url }}" class="nav-link">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ '/archive' | relative_url }}" class="nav-link">Archive</a>
-                    </li>
-                </ul>
-                
-                <div class="hamburger">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
+                <div class="nav-right">
+                    <ul class="nav-menu" id="navMenu">
+                        <li class="nav-item">
+                            <a href="{{ '/' | relative_url }}" class="nav-link{% if page.url == '/' %} active{% endif %}">
+                                <i class="fas fa-terminal" style="margin-right:4px;font-size:0.75rem;"></i> Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ '/about' | relative_url }}" class="nav-link{% if page.url == '/about/' %} active{% endif %}">
+                                <i class="fas fa-user-astronaut" style="margin-right:4px;font-size:0.75rem;"></i> About
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ '/archive' | relative_url }}" class="nav-link{% if page.url == '/archive/' %} active{% endif %}">
+                                <i class="fas fa-archive" style="margin-right:4px;font-size:0.75rem;"></i> Archive
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                        <i class="fas fa-sun icon-sun"></i>
+                        <i class="fas fa-moon icon-moon"></i>
+                    </button>
+                    
+                    <div class="hamburger" id="hamburger">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -130,50 +134,137 @@
                 <h4>Connect</h4>
                 <div class="social-links">
                     {% if site.social.github %}
-                        <a href="https://github.com/{{ site.social.github }}" target="_blank" rel="noopener">
+                        <a href="https://github.com/{{ site.social.github }}" target="_blank" rel="noopener" title="GitHub">
                             <i class="fab fa-github"></i>
                         </a>
                     {% endif %}
                     {% if site.social.twitter %}
-                        <a href="https://twitter.com/{{ site.social.twitter }}" target="_blank" rel="noopener">
+                        <a href="https://twitter.com/{{ site.social.twitter }}" target="_blank" rel="noopener" title="Twitter">
                             <i class="fab fa-twitter"></i>
                         </a>
                     {% endif %}
                     {% if site.social.linkedin %}
-                        <a href="https://linkedin.com/in/{{ site.social.linkedin }}" target="_blank" rel="noopener">
-                            <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/in/{{ site.social.linkedin }}" target="_blank" rel="noopener" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
                         </a>
                     {% endif %}
                     {% if site.email %}
-                        <a href="mailto:{{ site.email }}">
+                        <a href="mailto:{{ site.email }}" title="Email">
                             <i class="fas fa-envelope"></i>
                         </a>
                     {% endif %}
                 </div>
             </div>
             
-            <div class="footer-section">
-                <p>&copy; {{ site.time | date: '%Y' }} {{ site.author }}. All rights reserved.</p>
-                <p>Built with <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> and hosted on <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.</p>
+            <div class="footer-section" style="text-align:right;">
+                <p>&copy; {{ site.time | date: '%Y' }} {{ site.author }}</p>
+                <p>Built with <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> · Hosted on <a href="https://pages.github.com/" target="_blank">GitHub Pages</a></p>
             </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>Designed & developed with <span style="color:var(--accent);">♥</span> by {{ site.author }}</p>
         </div>
     </footer>
 
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <script>
-        // Mobile menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
+    (function() {
+        // ═══════════ DARK MODE ═══════════
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // Check saved preference or system preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            html.setAttribute('data-theme', 'dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
+
+        // ═══════════ MOBILE MENU ═══════════
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
 
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
 
-        // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
         }));
+
+        // ═══════════ HEADER SCROLL ═══════════
+        const header = document.getElementById('siteHeader');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            lastScroll = currentScroll;
+        }, { passive: true });
+
+        // ═══════════ READING PROGRESS ═══════════
+        const progressBar = document.getElementById('readingProgress');
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            progressBar.style.width = progress + '%';
+        }, { passive: true });
+
+        // ═══════════ BACK TO TOP ═══════════
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 400) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }, { passive: true });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ═══════════ SCROLL ANIMATIONS ═══════════
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    })();
     </script>
 </body>
 </html>

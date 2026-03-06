@@ -4,6 +4,10 @@ layout: default
 
 <article class="post">
     <header class="post-header">
+        {% if page.category %}
+            <span class="post-card-category" style="margin-bottom:1rem;">{{ page.category }}</span>
+        {% endif %}
+        
         <h1 class="post-title">{{ page.title }}</h1>
         
         <div class="post-meta">
@@ -19,13 +23,6 @@ layout: default
                 </span>
             {% endif %}
             
-            {% if page.category %}
-                <span class="post-category">
-                    <i class="fas fa-folder"></i>
-                    {{ page.category }}
-                </span>
-            {% endif %}
-            
             {% if page.tags.size > 0 %}
                 <span class="post-tags">
                     <i class="fas fa-tags"></i>
@@ -35,12 +32,6 @@ layout: default
                 </span>
             {% endif %}
         </div>
-        
-        {% if page.excerpt %}
-            <div class="post-excerpt">
-                {{ page.excerpt }}
-            </div>
-        {% endif %}
     </header>
 
     <div class="post-content">
@@ -48,44 +39,46 @@ layout: default
     </div>
 
     <footer class="post-footer">
-        <div class="post-navigation">
-            {% if page.previous.url %}
-                <a class="nav-previous" href="{{ page.previous.url | relative_url }}" title="{{ page.previous.title }}">
-                    <i class="fas fa-arrow-left"></i>
-                    <span>Previous Post</span>
-                    <strong>{{ page.previous.title | truncate: 50 }}</strong>
-                </a>
-            {% endif %}
-            
-            {% if page.next.url %}
-                <a class="nav-next" href="{{ page.next.url | relative_url }}" title="{{ page.next.title }}">
-                    <span>Next Post</span>
-                    <strong>{{ page.next.title | truncate: 50 }}</strong>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            {% endif %}
-        </div>
-        
         <div class="post-share">
             <h4>Share this post</h4>
             <div class="share-buttons">
                 <a href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}&url={{ site.url }}{{ page.url }}&via={{ site.social.twitter }}" 
-                   target="_blank" rel="noopener" class="share-twitter">
+                   target="_blank" rel="noopener" class="share-twitter" title="Share on Twitter">
                     <i class="fab fa-twitter"></i>
                 </a>
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" 
-                   target="_blank" rel="noopener" class="share-facebook">
+                   target="_blank" rel="noopener" class="share-facebook" title="Share on Facebook">
                     <i class="fab fa-facebook-f"></i>
                 </a>
                 <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ page.url }}" 
-                   target="_blank" rel="noopener" class="share-linkedin">
+                   target="_blank" rel="noopener" class="share-linkedin" title="Share on LinkedIn">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
                 <a href="mailto:?subject={{ page.title | uri_escape }}&body=Check out this post: {{ site.url }}{{ page.url }}" 
-                   class="share-email">
+                   class="share-email" title="Share via Email">
                     <i class="fas fa-envelope"></i>
                 </a>
             </div>
+        </div>
+        
+        <div class="post-navigation">
+            {% if page.previous.url %}
+                <a class="nav-previous" href="{{ page.previous.url | relative_url }}" title="{{ page.previous.title }}">
+                    <span><i class="fas fa-arrow-left" style="margin-right:4px;"></i> Previous Post</span>
+                    <strong>{{ page.previous.title | truncate: 50 }}</strong>
+                </a>
+            {% else %}
+                <div></div>
+            {% endif %}
+            
+            {% if page.next.url %}
+                <a class="nav-next" href="{{ page.next.url | relative_url }}" title="{{ page.next.title }}">
+                    <span>Next Post <i class="fas fa-arrow-right" style="margin-left:4px;"></i></span>
+                    <strong>{{ page.next.title | truncate: 50 }}</strong>
+                </a>
+            {% else %}
+                <div></div>
+            {% endif %}
         </div>
     </footer>
 </article>
