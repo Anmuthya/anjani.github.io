@@ -12,10 +12,10 @@ keywords: "Anjani, Anjani Kumar, Anjani Kumar Muthyala, Anjani Muthyala, Anjani 
             Available for collaboration
         </div>
         <h1>
-            Hi, I'm <span class="text-gradient">Anjani Kumar</span>
+            Hi, I'm <span class="text-gradient">Anjani Kumar Muthyala</span>
         </h1>
         <p class="hero-subtitle">
-            Senior DevOps Engineer crafting scalable cloud infrastructure, CI/CD pipelines, and AI-driven automation systems at <strong style="color:var(--text-0);">Verizon</strong>.
+            <strong>Anjani</strong> — Senior DevOps Engineer crafting scalable cloud infrastructure, CI/CD pipelines, and AI-driven automation systems at <strong style="color:var(--text-0);">Verizon</strong>.
         </p>
 
         <div class="terminal-window">
@@ -51,11 +51,14 @@ keywords: "Anjani, Anjani Kumar, Anjani Kumar Muthyala, Anjani Muthyala, Anjani 
             <a href="{{ '/about' | relative_url }}" class="btn btn-primary">
                 <i class="fas fa-user-astronaut"></i> About Me
             </a>
-            <a href="{{ '/assets/Anjani_Muthyala_Resume.pdf' | relative_url }}" target="_blank" class="btn btn-outline">
-                <i class="fas fa-file-alt"></i> Resume
+            <a href="{{ '/devops-engineer/' | relative_url }}" class="btn btn-outline">
+                <i class="fas fa-cogs"></i> DevOps Skills
             </a>
-            <a href="https://github.com/{{ site.social.github }}" target="_blank" rel="noopener" class="btn btn-ghost">
-                <i class="fab fa-github"></i> GitHub
+            <a href="{{ '/experience/' | relative_url }}" class="btn btn-outline">
+                <i class="fas fa-briefcase"></i> Experience
+            </a>
+            <a href="{{ '/assets/Anjani_Muthyala_Resume.pdf' | relative_url }}" target="_blank" class="btn btn-ghost">
+                <i class="fas fa-file-alt"></i> Resume
             </a>
         </div>
     </div>

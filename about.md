@@ -45,6 +45,8 @@ keywords: "Anjani, Anjani Kumar, Anjani Kumar Muthyala, Anjani Muthyala, who is 
             </li>
         </ul>
 
+        <p style="margin-top:1.5rem;">Deep dive into <a href="{{ '/devops-engineer/' | relative_url }}"><strong>Anjani's DevOps skills</strong></a> or explore <a href="{{ '/experience/' | relative_url }}"><strong>Anjani's work experience at Verizon</strong></a>.</p>
+
         <h3>What You'll Find Here</h3>
         <ul class="about-list">
             <li>
