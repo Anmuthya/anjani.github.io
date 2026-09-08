@@ -555,6 +555,9 @@ strong, b { font-weight: 650; color: var(--text-1); }
 }
 .cert-badge:hover { border-color: var(--border-strong); color: var(--text-0); }
 .cert-badge i { font-size: 0.75rem; color: var(--text-3); }
+.cert-badge .fa-google { color: #4285F4; }
+.cert-badge .fa-redhat { color: #EE0000; }
+.cert-badge .fa-aws    { color: #FF9900; }
 
 /* ============= POST CARDS ============= */
 .posts-section { margin-bottom: 3.5rem; }
